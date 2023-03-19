@@ -191,7 +191,8 @@ f.close()
 # os.rmdir("myfolder")
 
 # automatically closes a file stream
-# a+ means append + read mode 
+# a+ means append + read mode
+# r+ means write and read (here file will be overwrited not appended) 
 
 with open('data.txt','a+') as file:
     file.write('\nI am also good')
