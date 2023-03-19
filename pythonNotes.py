@@ -190,6 +190,7 @@ f.close()
 # import os
 # os.rmdir("myfolder")
 
+# automatically closes a file stream
 with open('data.txt','a+') as file:
     file.write('\nI am also good')
     for line in file:
