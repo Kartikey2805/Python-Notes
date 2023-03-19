@@ -194,6 +194,7 @@ f.close()
 # a+ means append + read mode
 # r+ means write and read (here file will be overwrited not appended)
 # w - will overwrite only and create file if it does not exists 
+# a - will only append and create file if it does not exits 
 
 with open('data.txt','a+') as file:
     file.write('\nI am also good')
