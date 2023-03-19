@@ -1,3 +1,5 @@
+# https://docs.python.org/3/library/
+
 # fruit = 'Orange';
 # print(fruit[7])
 
@@ -251,3 +253,55 @@ import sys
 
 # import module1;
 # print(module1.sum(1,2))
+
+# args and kwargs ( keyword arguments )
+# def sum(*numbers):
+    # iterate numbers and do sum, here numbers is a list
+# sum(1,2,3,4)
+
+# def PrintNameAndAge(**kwargs):
+#     for name,age in kwargs.items():
+#         print(name,age)
+
+# PrintNameAndAge(John=29,Michael=32)
+
+# http request
+# import requests
+
+# url = "https://weatherapi-com.p.rapidapi.com/current.json"
+
+# querystring = {"q":"<REQUIRED>"}
+
+# headers = {
+# 	"X-RapidAPI-Key": "SIGN-UP-FOR-KEY",
+# 	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+# }
+
+# response = requests.request("GET", url, headers=headers, params=querystring)
+
+# print(response.text)
+
+# __name__ is a built-in variable which evaluates to the name of the current module. Thus it can be used to check whether the current script is being run on its own or being imported somewhere else by combining it with if statement, as shown below.
+
+# Consider two separate files File1 and File2.
+
+# # File1.py 
+  
+# print ("File1 __name__ = %s" %__name__) 
+  
+# if __name__ == "__main__": 
+#     print ("File1 is being run directly")
+# else: 
+#     print ("File1 is being imported")
+ 
+
+# # File2.py 
+  
+# import File1 
+  
+# print ("File2 __name__ = %s" %__name__) 
+  
+# if __name__ == "__main__": 
+#     print ("File2 is being run directly")
+# else: 
+#     print ("File2 is being imported")
