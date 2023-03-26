@@ -305,3 +305,21 @@ import sys
 #     print ("File2 is being run directly")
 # else: 
 #     print ("File2 is being imported")
+
+# virtual environment 
+
+# - used to manage dependencies for a particular project and resolve issues
+# that come with installing dependencies globally
+
+# python -m venv venv  - create virtual env for a project
+# for git bash to ente in venv mode
+# source venv/Scripts/activate
+
+# to deactivate - type deactivate
+
+# to create requirements.txt
+# pip freeze > requirements.txt
+
+# to install from requirements.txt
+# first enter venv mode 
+# pip install -r requirements.txt
