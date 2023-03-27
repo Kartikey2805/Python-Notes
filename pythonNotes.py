@@ -323,3 +323,10 @@ import sys
 # to install from requirements.txt
 # first enter venv mode 
 # pip install -r requirements.txt
+
+# import pandas
+# used to read .csv files 
+# for eg
+# df = pandas.read_csv('data.csv',sep=';')
+# for index,row in df:
+#     print(row['column name'])
