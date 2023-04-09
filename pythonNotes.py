@@ -330,3 +330,9 @@ import sys
 # df = pandas.read_csv('data.csv',sep=';')
 # for index,row in df:
 #     print(row['column name'])
+
+# pip install opencv-python
+# opencv is used to read and write images
+# import cv2
+# cv.imread('img.png')
+# cv.imwrite('img.png',numpyArray)
