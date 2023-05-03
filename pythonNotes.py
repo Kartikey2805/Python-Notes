@@ -36,7 +36,7 @@
 # print('{0:10} | {1:10}'.format('Name','Age'));
 # < represents left alignment, > represents right alignment
 # {0:10} represents take 1st argument and make it 10 characters long
-# print('{0:10} | {1:<10}'.format('John',33))  
+# print('{0:10} | {1:10}'.format('John',33))  
 
 # .2f represents gives us 2 decimal places after the number
 # print('{0:<8.2f}'.format(2.33333))
@@ -167,10 +167,10 @@
  
 #creating a text file with the command function "x"
 
-# f = open("data.txt", "r")
-# print(f.tell())
-# print(f.read())
-# print(f.tell())
+# with open("data.txt", "r") as f:
+#     print(f.tell())
+#     print(f.read())
+#     print(f.tell())
 
 # seek - set pointer back to begining of file 
 # f.seek(0)
@@ -260,8 +260,11 @@ import sys
 # sum(1,2,3,4)
 
 # def PrintNameAndAge(**kwargs):
+#     print(kwargs)
 #     for name,age in kwargs.items():
 #         print(name,age)
+
+# here kwargs is a dictionary
 
 # PrintNameAndAge(John=29,Michael=32)
 
@@ -312,7 +315,7 @@ import sys
 # that come with installing dependencies globally
 
 # python -m venv venv  - create virtual env for a project
-# for git bash to ente in venv mode
+# for git bash to enter in venv mode
 # source venv/Scripts/activate
 
 # to deactivate - type deactivate
@@ -336,3 +339,40 @@ import sys
 # import cv2
 # cv.imread('img.png')
 # cv.imwrite('img.png',numpyArray)
+
+# web scraping
+
+# def extract(source):
+#     extractor = selectorlib.Extractor.from_yaml_file('extract.yaml')
+#     value = extractor.extract(source)['tours']
+#     return value
+
+# extract.yaml
+
+# tours:
+#   css: '#displaytimer'
+
+
+# for mailing
+
+# import smtplib,ssl
+
+# def send_email(message):
+#     host = 'smtp.gmail.com'
+#     port = 465
+
+#     username =  'kartikey.goel.285@gmail.com'
+#     password =  'rmhfrwhhusshohjt'
+#     receiver = 'kartikey.goel.285@gmail.com'
+
+#     # message = """\
+#     # Subject:Hi!
+#     # How are you?
+#     # Bye!
+#     # """
+
+#     context = ssl.create_default_context()
+
+#     with smtplib.SMTP_SSL(host,port,context=context) as server:
+#         server.login(username,password)
+#         server.sendmail(username,receiver,message)

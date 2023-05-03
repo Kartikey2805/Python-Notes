@@ -1,6 +1,4 @@
-for line in sys.stdin:
-#     if 'q' == line.strip():
-#         break
-#     print(line)
-
-# print('Exit')
+f = open("data.txt", "r")
+print(f.tell())
+print(f.read())
+print(f.tell())
