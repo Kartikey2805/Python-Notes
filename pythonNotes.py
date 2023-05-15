@@ -376,3 +376,29 @@ import sys
 #     with smtplib.SMTP_SSL(host,port,context=context) as server:
 #         server.login(username,password)
 #         server.sendmail(username,receiver,message)
+
+
+# databases --- sqlite3
+
+# import sqlite3
+
+# establish connection 
+
+# connection = sqlite3.connect('data.db')
+# cursor = connection.cursor()
+
+# query the data
+
+# cursor.execute('select * from events')
+# print(cursor)
+# rows = cursor.fetchall()
+# print(rows)
+
+# insert new rows 
+
+# new_rows = [('Leopard','Leopard City','2023.05.07'),('Cow','Cow City','2023.05.06')]
+
+# cursor.executemany('insert into events values(?,?,?)',new_rows)
+# connection.commit()
+
+
