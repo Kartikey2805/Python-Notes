@@ -1,3 +1,8 @@
+# Everything in Python is an object
+# print(1 + 2)
+# print((1).__add__(2))
+# Above 2 statements are same
+
 # Start a particular version of python by following commands
 
 # py --list (all versions installed)
@@ -6,9 +11,9 @@
 # py -3.9 (start a session using particular python version)
 # py - will use default verison of python
 
-# Floats do not have exact representation 
+# Floats do not have exact representation
 # like 0.1 is represented as 0.9999999....
-# format(0.1,'.25f') 
+# format(0.1,'.25f')
 # 0.1 + 0.1 == 0.2 // output is False
 
 # datatypes are objects
@@ -17,9 +22,11 @@
 
 # Dictonaries - hashMaps (Mutable)
 
+import csv
+from datetime import datetime
 dict = {
-    'a':97,
-    'b':98
+    'a': 97,
+    'b': 98
 }
 
 # print(dict['a'])
@@ -58,7 +65,7 @@ dict = {
 
 #  --------- SETS  ------ (only unique values)
 
-s = {1,'a',True}
+s = {1, 'a', True}
 # s = set([1,'a',True])
 # s = set()  ## empty set, if s = {} it would be a dictionary
 # print(s)
@@ -82,14 +89,14 @@ s = {1,'a',True}
 # s1 > s2 -- strict superset
 # s1 >= superset
 
-# Union 
+# Union
 # s1 | s2 ## union of s1 and s2
 # s1 & s2 ## intrersection
 # s1 - s2 ## in s1 but not in s2
 
 ###############  comprehensions (alternate of iterables) ##########
-nums = [1,2,3,4,5]
-# list comprehensions 
+nums = [1, 2, 3, 4, 5]
+# list comprehensions
 # squareOfNums = [number ** 2 for number in nums if number % 2 == 0]
 # print(squareOfNums)
 
@@ -106,7 +113,7 @@ nums = [1,2,3,4,5]
 
 a = 1
 b = 0
-# try:    
+# try:
 #     res = a/b
 #     print(res)
 # except ZeroDivisionError as exp:
@@ -114,14 +121,121 @@ b = 0
 # except IndexError as exp:
 #     print(exp)
 # finally:
-#     print('this executes always no matter what')        
-    
+#     print('this executes always no matter what')
+
 # print(res)
 # repr(exception)  ## object key value
-# print(exception) ## only value 
+# print(exception) ## only value
+
+# --------------     Iterators   --------------------#
+
+# l = [num for num in range(1, 10)]
+# iterator = iter(l)
+
+# try:
+#     while True:
+#         print(next(iterator))
+# except StopIteration:
+#     pass
+
+# EG - list() returns iterable (it is an object while enumerate returns a iterable)
+
+# -------- Generators ------------
+# They are iterators (implement next() function)
+# eg - (i**2 for in range(10))  --- create a generator
+# They use lazy iteration - calculated only when requested
+# they are memory efficient
+
+# l = range(10)
+# print(3 in l, 1 in l)
+# itr = iter(l)
+# print(next(itr))
+# r = list(itr)
+# print(r)
 
 
+# ****************** Functions *******************
+
+# print(datetime.now().weekday())
+
+# *args in functions is a tuple - arguments
+# default values comes to right (except for *args)
+# def func(a=1,*args):  # this will work
+#     print(a)
+#     print(args)
+
+# def func(a=1,b,*args):  # this will not work
+# print(a)
+# print(args)
+
+# func()
+
+# **kwargs - keyword arguments - it is a tuple
+
+# Lambda functions --  returns function -- shorter expression
+
+# f = lambda a,b:a+b
+# print(f(1,2))
+
+# ------------ filter -----------------
+
+# l = list(range(10))
+# evens = filter(lambda a: a % 2 == 0,l)
+# print(list(evens))
+
+# ----------- sorting -------------
+
+# data = [-1,2,8,10,9,4,65,56]
+# print(sorted(data,reverse=True))
 
 
+# ------------- Decorators ---------------
 
- 
+
+# ------------   Files (CSV Module) ------------
+
+
+# with open('file1.csv', 'r') as f:
+#     reader = csv.reader(f, delimiter=',', quotechar='"', escapechar="\\")
+#     for row in reader:
+#         print(row)
+
+# dialect -- uses for providing pre defined settings in csv reader for not typing settings again and again
+
+# csv.list_dialects()
+
+# csv.register_dialect('pdv', delimiter=",", quotechar='"', escapechar="\\")
+
+# print(csv.list_dialects())
+
+# with open('file1.csv', 'r') as f:
+#     reader = csv.reader(f, dialect="pdv")
+#     for row in reader:
+#         print(row)
+
+# data = [['a', 'a', 'a'], ['b', 'b', 'b']]
+
+# with open('file1.csv', 'a') as f:
+#     writer = csv.writer(f, dialect="pdv", quoting=csv.QUOTE_ALL)
+#     for row in data:
+#         writer.writerow(row)
+
+
+# ------------ Classes ------------
+
+# class Circle:
+#     def __init__(self, radius):
+#         self.radius = radius
+
+#     def outputRadius(self):
+#         print(self.radius)
+
+# special methods like __eq__
+#     def __eq__(self, other):
+#         return self.radius == other.radius
+
+# c1 = Circle(2)
+# c2 = Circle(2)
+
+# print(c1 == c2) #return True ( because of re defining __eq__ method in Circle class otherwise False)
+# c1 == c2 is equivalent to c1.__eq__(c2)
