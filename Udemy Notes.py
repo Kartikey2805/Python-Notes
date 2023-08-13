@@ -22,6 +22,7 @@
 
 # Dictonaries - hashMaps (Mutable)
 
+import json
 import csv
 from datetime import datetime
 dict = {
@@ -239,3 +240,65 @@ b = 0
 
 # print(c1 == c2) #return True ( because of re defining __eq__ method in Circle class otherwise False)
 # c1 == c2 is equivalent to c1.__eq__(c2)
+
+# c1.__dict__ returns dictionary of class instance
+# val = 1.2
+# print(isinstance(val,float))
+
+
+# ----------Properties of classes----------
+
+# setter and getter methods
+
+class Circle:
+    def __init__(self, radius):
+        if not (isinstance(radius, float) or isinstance(radius, int)):
+            raise ValueError('radius must be a number')
+        if radius < 0:
+            raise ValueError('radius must be a positive number')
+        self.__radius = radius
+
+# getter method, can be called using instance.radius, no need of paranthesis
+    @property
+    def radius(self):
+        print('getter method called')
+        return self.__radius
+
+# setter method, it should be of same name to work with getter methods
+
+    @radius.setter
+    def radius(self, value):
+        if not (isinstance(value, float) or isinstance(value, int)):
+            raise ValueError('radius must be a number')
+        if value < 0:
+            raise ValueError('radius must be a positive number')
+        self.__radius = value
+
+
+# c1 = Circle('value') # will not work
+# use double underscore to make attribute private
+# c1 = Circle(1.2)
+# # print(c1.__radius)  # will not work
+# c1.radius = 1.5
+# print(c1.radius)
+
+
+#  ---------- Third Party Libraries ----------
+
+# 1. pytz -- for timezones
+# 2. dateutil
+# 3. json
+# 4. requests
+
+# import json , no need to import as it is default
+
+# json_str = '{"name":"Kart","age":"24","adult":true}'
+
+# parsed_json = json.loads(json_str)
+# print(parsed_json)
+
+# import requests
+
+# response = requests.get("https://www.stackoverflow.com")
+
+# print(response.status_code)
