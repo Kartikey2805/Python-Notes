@@ -22,6 +22,9 @@
 
 # Dictonaries - hashMaps (Mutable)
 
+import pandas as pd
+import numpy as np
+import numpy
 import json
 import csv
 from datetime import datetime
@@ -302,3 +305,56 @@ class Circle:
 # response = requests.get("https://www.stackoverflow.com")
 
 # print(response.status_code)
+
+
+# --------------- NumPy -------------------------#
+
+# Numpy - faster than python lists -- uses c code to execute the operations
+# Numpy is foundation for pandas library
+# contains homogenous elements
+
+
+# arr = np.array([1, 2, 3, 4, 5])
+# arr2 = np.array([1, 2, 3, 4, 5, 6], dtype=np.uint8)  # unsigned integer
+
+# print(type(arr))
+
+# # for data type of elements
+# print(arr.dtype)
+
+# multi_dimensional = [[1, 2, 3], [4, 5, 6]]
+# print(np.array(multi_dimensional))
+
+# Shape - It is tuple, for example - for 2D arrays it is of form (no of rows, no of columns)
+# print(arr.shape)
+
+# array of zeros
+# zeroes = np.zeros(10) # dtype = float64 by default
+# print(zeroes.dtype)
+# just like zeros, we have functions like ones, full for specific constant value,
+# eye for indentity matrices, arrange (just like range function)
+
+# Slicing multi D arrays
+multiD = np.array([[1, 2, 3], [4, 5, 6]])
+# print(multiD[0:1,1:3]) # first for rows(axis - 0) and then columns (axis-1)
+
+# masking
+
+# arr = np.array([i for i in range(10)])
+# evens = arr[arr % 2 == 0] # first it creates boolean array for each element and then pass it in (first arr%2 == 0 evaluates)
+# print(evens)
+
+
+# *************** Pandas Library ******************#
+
+# Pandas is built on top of Numpy - used for data manipulation
+# It can contain hetero elements
+# It has following classes
+# 1. Series - 1D
+# 2. DataFrame - 2D
+# 3. Index
+
+# import pandas as pd
+
+idx = pd.Index([10, 20, 30])
+print(idx.dtype)

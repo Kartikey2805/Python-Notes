@@ -1,3 +1,3 @@
-csv.register_dialect('pdv',delimiter=",",quotechar='"',escapechar="\\")
-
-print(csv.list_dialects())
+person1 = Person.fromstr(str1)
+# print(person1.name)
+# print(person1.age)
