@@ -7,6 +7,9 @@ import os
 # Welcome to Python Course!
 # ''')
 
+# a // b (does integer division) like 4 // 3 gives 1 not 1.33333
+# a ** 2 # squares a number 
+
 # def greet(firstname,middlename,lastname="Kumar"):
 #     print(f"Hi {firstname} {lastname}")
 
@@ -29,20 +32,95 @@ import os
 
 # import module2 as m2
 # from sum import sum
+# from module1 import sum
+
+# def sum(*args,**kwargs):
+#     # args is tuple
+#     # kwargs is dictionary
+#     print(args)
+#     print(kwargs)
+#     print(args[0])
+#     s = 0
+#     for n in args:
+#             s += n
+#     return s
+
+# print(sum(1,2,3,4,key="sum"))
 
 # result = sum(1, 2)
 # print(result)
 
+# modules
+# https://realpython.com/python-modules-packages/
+
+# Reloading a Module
+# If you make a change to a module and need to reload it,
+# you need to either restart the interpreter or use a function called reload() from module importlib:
+
 # pakages
 # from calculations.calc import sum
-# from calculations import *
+# from calculations import calc
+# print(calc.__name__)
 
+# Note that this does not make the module contents directly accessible to the caller. 
+# Each module has its own private symbol table, which serves as the global symbol table for all objects defined in the module.
+# Thus, a module creates a separate namespace, as already noted.
+
+# namespaces - The namespaces in Python is a container that holds identifiers (names of variables, functions, classes, etc.) and maps them to their corresponding objects. It acts as a boundary, ensuring that names are unique and avoiding naming conflicts. Python provides multiple types of namespaces
+# The built-in function dir() returns a list of defined names in a namespace. 
+# Without arguments, it produces an alphabetically sorted list of names in the current local symbol table:
+
+# calc.privateVar = "Not Private"
+# print(calc.privateVar)
 # print(calc.__doc__)
 # result = sum(1, 2)
 # print(result)
 
 # working with paths
-# from pathlib import Path
+
+# https://realpython.com/python-pathlib/
+
+# Working with files and interacting with the file system are common tasks for Python developers. 
+# Some cases may involve only reading or writing files, but sometimes more complex tasks are at hand.
+# Maybe you need to list all files of a given type in a directory, find the parent directory of a given file,
+# or create a unique filename that doesn’t already exist. That’s where pathlib comes in.
+
+from pathlib import Path
+# for filePath in Path.cwd().glob('*.cpp'):
+#     print(filePath)
+#     Path.mkdir('Archive')
+#     newPath = Path(f'Archive/{filePath.name}')
+#     print(newPath.exists())
+#     filePath.replace(newPath)
+    # Path.replace(filePath,newPath)
+
+# >>> from pathlib import Path
+# >>> path = Path(r"C:\Users\gahjelle\realpython\test.md")
+# >>> path
+# WindowsPath('C:/Users/gahjelle/realpython/test.md')
+
+# >>> path.name
+# 'test.md'
+
+# >>> path.stem
+# 'test'
+
+# >>> path.suffix
+# '.md'
+
+# >>> path.anchor
+# 'C:\\'
+
+# >>> path.parent
+# WindowsPath('C:/Users/gahjelle/realpython")
+
+# >>> path.parent.parent
+# WindowsPath('C:/Users/gahjelle')
+
+# Path.home()
+
+# create new file 
+# Path.touch('new.txt')
 
 # 2 types - absolute and relative paths
 # path = Path("Random")
@@ -99,12 +177,14 @@ import os
 #     return n * factorial(n-1)
 
 # print(factorial(5))
+# print(type(factorial))
 
 # sets
 
 # s = {} # this creates empty dictionary
 # s = set() # this creates empty set
 # s = {1, 2, 1, 1, 1, 2, 3, 4, 4, 5, 5}
+# print(type(s))
 # print(s)
 
 # We can use else with for loops and while loops, it will always execute if loops finishes successfully,
@@ -115,9 +195,19 @@ import os
 
 # if __name__ == "__main__"  --->  used in modules
 
-# os module
+# # os module
 # import os
-# os.rmdir('OS')
+# print(os.name)
+# # print((os.environ))
+# print(os.getenv('HOME','display this if the variable is not present'))
+# # os.rmdir('OS')
+# cwd = os.getcwd()
+
+# # List the details
+# for dirpath, dirnames, filenames in os.walk(cwd):
+#     print(dirpath)
+#     print(dirnames)
+#     print(filenames)
 
 # global and  local variables
 # x = 4
@@ -128,20 +218,21 @@ import os
 #     x = 5
 #     print(x)
 
-
+# changeVariable()
 # print(x)
 
 # file IO
 # import time
 # from functools import reduce
+
+
 # import os
+
+# https://www.w3resource.com/python-exercises/os/index.php
+
 # print(os.getcwd())
 # os.chdir('calculations')
 # print(os.getcwd())
-# list = os.listdir()
-# for file in list:
-#     if file.endswith('.py'):
-#         print(file)
 
 # print(os.path.dirname())
 # f = open('requirements.txt','rb')
@@ -158,18 +249,26 @@ import os
 # ''')
 
 # reading a file
+
+# x = 'NULL';
+
 # with open('first.txt','r') as file:
-#     print(file.readlines())
+#     # print(file.readlines())
+#     x = file.read()
+
+# print(x)
 
 # seek tell
-# with open('first.txt', 'w') as file:
-#     # file.seek(5)
-#     # print(file.tell())
-#     # r = file.read(5)
-#     # print(file.tell())
-#     # print(file.read(5))
-#     file.write('Hi I am a python developer')
-#     file.truncate(50)
+# with open('first.txt', 'r') as file:
+#     file.seek(5)
+#     print(file.tell())
+#     r = file.read(5)
+#     print(file.tell())
+#     print(file.read(5))
+    # file.write('Hi I am a python developer')
+    # file.truncate(50)
+    # print(file.tell())
+
 
 # lamba functions
 
@@ -191,7 +290,7 @@ import os
 
 # print(list(square_list))
 
-l = [1, 2, 3, 4, 5]
+# l = [1, 2, 3, 4, 5]
 
 # map
 # print(list(map(lambda x: x*2, l)))
@@ -199,6 +298,7 @@ l = [1, 2, 3, 4, 5]
 # filter
 # print(list(filter(lambda x: x % 2 == 0, l)))
 
+# from functools import reduce
 
 # reduce
 # print(reduce(lambda x, y: x+y, l))
@@ -217,8 +317,9 @@ l = [1, 2, 3, 4, 5]
 
 # print(sum(1,2,3,a=1,b=2,c=3))
 
-# decorators
 
+# decorators
+# https://www.geeksforgeeks.org/decorators-in-python/
 
 # def decor(fn):
 
@@ -271,6 +372,7 @@ l = [1, 2, 3, 4, 5]
 # static methods # doesn't depend on class instance, can be called directly using class, no need to add self keyword
 # Instance methods are methods that are bound to an instance of a class, and have access to the instance and its attributes.
 # Static methods, on the other hand, are not bound to an instance and do not have access to the instance or its attributes.
+
 # class Math:
 #     def __init__(self, num):
 #         self.num = num
@@ -296,6 +398,7 @@ l = [1, 2, 3, 4, 5]
 # emp1 = Employee()
 # # emp1.companyName = 'Apple'
 # print(emp1.showCompanyName())
+# print(Employee.companyName)
 
 # os.chdir(os.path.join(os.getcwd(), 'files'))
 # for file in range(26):
@@ -309,11 +412,14 @@ l = [1, 2, 3, 4, 5]
 # diff bw mkdir and makedirs is makedirs also creates intermediate directories present in path specified whereas mkdir
 # does not create intermediate directories
 
+# https://realpython.com/instance-class-and-static-methods-demystified/
+
 # class method
 
 # A class method is a method that is bound to the class and not the object of the class.
 # They have the access to the state of the class as it takes a class parameter that points to the class and not the object instance.
-# It can modify a class state that would apply across all the instances of the class. For example, it can modify a class variable that would be applicable to all instances.
+# It can modify a class state that would apply across all the instances of the class. 
+# For example, it can modify a class variable that would be applicable to all instances.
 
 # class Person:
 
@@ -324,6 +430,8 @@ l = [1, 2, 3, 4, 5]
 # person1 = Person()
 # person1.changeName('Kartikey')
 # print(person1.name)
+# person2 = Person()
+# print(person2.name)
 # print(Person.name)
 
 # using classmethod as constructor
@@ -345,6 +453,11 @@ l = [1, 2, 3, 4, 5]
 #         return self.name
 
 
+# class Welcome:
+#     def greet(self):
+#         print('Welcome!')
+
+# print(Welcome.greet())        
 # str1 = "Kartikey-25"
 # # p1 = Person("Kartikey", 25)
 
@@ -414,3 +527,4 @@ l = [1, 2, 3, 4, 5]
 # c1 = Child("Kartikey")
 # print(c1.bank_balance)
 # print(c1.jewellery)
+
