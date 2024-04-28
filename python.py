@@ -482,7 +482,6 @@ from pathlib import Path
 #     def parentMethod(self):
 #         print("this is a parent method")
 
-
 # class Child(Parent):
 #     def childMethod(self):
 #         print("this is a child method")
@@ -498,21 +497,27 @@ from pathlib import Path
 # dunder/magic methods
 # https://www.geeksforgeeks.org/dunder-magic-methods-python/
 
+# print(dir(int)) 
+
+# class Student:
+#     def __init__(self,name):
+#         self.name = name
+
+
 # operator overloading
 
 # multiple inheritance
 
 # class Father:
 #     bank_balance = "xxxxx"
-
+#     print('Father class is invoked')
 #     def __init__(self, name):
 #         print("Father class is invoked")
 #         self.name = name
 
 # class Mother:
-
 #     jewellery = "100gm"
-
+#     print("Mother class is invoked")
 #     def __init__(self, name):
 #         print("Mother class is invoked")
 #         self.name = name
@@ -527,4 +532,366 @@ from pathlib import Path
 # c1 = Child("Kartikey")
 # print(c1.bank_balance)
 # print(c1.jewellery)
+
+# time module 
+# import time
+# print(time.time())
+# print(time.localtime())
+# t = time.localtime()
+# formatted_time = time.strftime('%Y-%m-%d %H:%M:%S',t)
+# print(formatted_time)
+# time.sleep(4)
+# print('this will execute after 4 seconds')
+
+# str = "hello"
+
+# for i in enumerate(str):
+#     print(i)  
+#     print(len(i))  
+
+# l = [('W',5),('E',2)]
+# for i in l:
+#     print(i[0])
+
+# class CustomException(Exception):
+#     errorcode = None
+#     def __init__(self):
+#         print('Base Exception is executed')
+#         super().__init__('This is customer error with error code {0}'.format(self.errorcode))
+
+# class Errorclass1(CustomException):
+#     errorcode = '409'
+
+# raise Errorclass1()
+
+# In below case __init__ method of Parent will execute as child does not have a __init__ method, __init__ is always looked
+# from bottom to up until found in one class 
+
+# class Parent:
+#     def __init__(self,name):
+#         print('parent')
+#         self.name = name
+
+# class Child(Parent):
+#     # def __init__(self, name):
+#     #     self.name = name
+#     name = 'Child'
+
+# c = Child()
+
+# MultiThreading
+
+# Multithreading is a technique in programming that allows multiple threads of execution to run concurrently within a single process.
+# In Python, we can use the threading module to implement multithreading.
+
+# import threading
+# import time 
+
+# res = []
+
+# def func(seconds):
+#     print(f"this work will take around {seconds} seconds")
+#     time.sleep(seconds)
+#     return f"time taken {seconds} seconds"
+#     # val = f"time taken {seconds} seconds"
+#     # res.append(val)
+
+# # thread initialization 
+# t1 = threading.Thread(target=func,args=[4])
+# t2 = threading.Thread(target=func,args=[2])
+
+# # starting a thread 
+# t1.start()
+# t2.start()
+
+# # waiting for thread to complete before going to other code after this
+# t1.join()
+# t2.join()
+
+# # both threads will complete in 4 seconds 
+# print(res)
+
+# for storing results 
+# from concurrent.futures import ThreadPoolExecutor
+
+# list = [4,2,1]
+# res = []
+# with ThreadPoolExecutor() as executor:
+#     res = executor.map(func,list)
+
+# for ele in res:
+#     print(ele)
+
+# MultiProcessing 
+
+# import multiprocessing
+# import concurrent.futures
+# import requests
+
+# def downloadFile(url, name):
+#   print(f"Started Downloading {name}")
+#   response = requests.get(url)
+#   open(f"files/file{name}.jpg", "wb").write(response.content)
+#   print(f"Finished Downloading {name}")
+ 
+
+
+# url = "https://picsum.photos/2000/3000"
+# # pros = []
+# # for i in range(50):
+# #   # downloadFile(url, i)
+# #   p = multiprocessing.Process(target=downloadFile, args=[url, i])
+# #   p.start()
+# #   pros.append(p)
+
+# # for p in pros:
+# #   p.join()
+
+# with concurrent.futures.ProcessPoolExecutor() as executor:
+#   l1 = [url for i in range(60)]
+#   l2 = [i for i in range(60)]
+#   results = executor.map(downloadFile, l1, l2)
+#   for r in results:
+#     print(r)
+
+# json module 
+# https://www.w3schools.com/python/python_json.asp
+
+import json
+
+# path = Path.joinpath(Path.cwd(),'file.json')
+
+# with open(path,'r') as file:
+    # f = json.load(file)
+    # print(f["name"])
+    # print(f["age"])
+    # print(file.read()) # this cannot parse json like above
+
+# print(f)
+
+# If you have a Python object, you can convert it into a JSON string by using the json.dumps() method.
+
+# print(json.dumps({"name": "John", "age": 30}))
+# print(json.dumps(["apple", "bananas"]))
+# print(json.dumps(("apple", "bananas")))
+# print(json.dumps("hello"))
+# print(json.dumps(42))
+# print(json.dumps(31.76))
+# print(json.dumps(True))
+# print(json.dumps(False))
+# print(json.dumps(None))
+
+# When you convert from Python to JSON, Python objects are converted into the JSON (JavaScript) equivalent:
+
+# Python	JSON
+# dict	Object
+# list	Array
+# tuple	Array
+# str	    String
+# int	    Number
+# float	Number
+# True	true
+# False	false
+# None	null
+
+
+# Convert a Python object containing all the legal data types:
+
+x = {
+  "name": "John",
+  "age": 30,
+  "married": True,
+  "divorced": False,
+  "children": ("Ann","Billy"),
+  "pets": None,
+  "cars": [
+    {"model": "BMW 230", "mpg": 27.5},
+    {"model": "Ford Edge", "mpg": 24.1}
+  ]
+}
+# print(json.dumps(x))
+
+# indentation 
+# print(json.dumps(x, indent=2))
+
+# seperators 
+# print(json.dumps(x, indent=4, separators=(". ", " = ")))
+
+
+# sort keys 
+# print(json.dumps(x, indent=4, sort_keys=True))
+
+# csv module 
+
+# import csv
+
+# # Open the CSV file for reading
+# with open('employees.csv', mode='r') as file:
+# 	# Create a CSV reader with DictReader
+# 	csv_reader = csv.DictReader(file)
+
+# 	# Initialize an empty list to store the dictionaries
+# 	data_list = []
+
+# 	# Iterate through each row in the CSV file
+# 	for row in csv_reader:
+# 		# Append each row (as a dictionary) to the list
+# 		data_list.append(row)
+
+# # Print the list of dictionaries
+# for data in data_list:
+# 	print(data)
+
+# # importing the csv module
+# import csv
+# # field names
+# fields = ['Name', 'Branch', 'Year', 'CGPA']
+# # data rows of csv file
+# rows = [['Nikhil', 'COE', '2', '9.0'],
+# 		['Sanchit', 'COE', '2', '9.1'],
+# 		['Aditya', 'IT', '2', '9.3'],
+# 		['Sagar', 'SE', '1', '9.5'],
+# 		['Prateek', 'MCE', '3', '7.8'],
+# 		['Sahil', 'EP', '2', '9.1']]
+# # name of csv file
+# filename = "university_records.csv"
+# # writing to csv file
+# with open(filename, 'w') as csvfile:
+# 	# creating a csv writer object
+# 	csvwriter = csv.writer(csvfile)
+# 	# writing the fields
+# 	csvwriter.writerow(fields)
+# 	# writing the data rows
+# 	csvwriter.writerows(rows)
+
+# import csv
+
+# with open('t.txt') as file:
+#     print(file.read())
+#     f = csv.reader(file)
+#     for data in f:
+#         print(data[0])
+
+# command line arguments 
+# from argparse import ArgumentParser
+# parse = ArgumentParser()
+# parse.add_argument('arg1',type=int)
+# parse.add_argument('arg2',type=str)
+# args = parse.parse_args()
+# print(args.arg1)
+# print(args.arg2)
+
+
+
+# # octal to decimal using int()
+# print("int() on 0o12 =", int('0o12', 8))
+ 
+# # binary to decimal using int()
+# print("int() on 0b110 =", int('0b110', 2))
+ 
+# # hexa-decimal to decimal using int()
+# print("int() on 0x1A =", int('0x1A', 16))
+
+# format 
+# 56.0 to 56.00
+# n = 56.0 
+# format(n,'.2f')
+
+# math module 
+# import math
+
+
+# re module (regular exp)
+
+# Regular expressions are a powerful tool for matching patterns within text. They’re used for searching, replacing, and parsing strings based on specific patterns. Here’s a quick overview of some basic regex components:
+
+# Literals: These are the simplest form of pattern matching. For example, a will match any occurrence of the character ‘a’.
+# Character Classes: These are used to match any one of a specific set of characters. For example, [abc] will match any single ‘a’, ‘b’, or ‘c’.
+# Dot (.): This special character matches any single character except newline characters. For example, a.b will match ‘acb’, ‘aab’, ‘a3b’, etc.
+# Anchors: These specify the start and end of a string. ^ denotes the start, and $ denotes the end. For example, ^a will match any string that starts with ‘a’.
+# Quantifiers: These specify how many instances of a character or group must be present for a match.
+# * matches zero or more times.
+# + matches one or more times.
+# ? matches zero or one time.
+# {n} matches exactly n times.
+# {n,} matches at least n times.
+# {n,m} matches between n and m times.
+# Groups and Ranges:
+# Parentheses () are used to define groups.
+# A vertical bar | denotes an “or” condition.
+# A hyphen - within square brackets denotes a range of characters.
+# Escape Character: The backslash \ is used to escape special characters.
+# Here’s an example of a regex pattern and its explanation:
+
+# ^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$
+
+# This pattern matches email addresses:
+
+# ^ and $ anchor the pattern to match the entire string.
+# ([a-z0-9_\.-]+) matches the username part of the email, which can contain lowercase letters, numbers, underscores, periods, and hyphens.
+# @ is a literal character that appears in all email addresses.
+# ([\da-z\.-]+) matches the domain part, which can contain letters, numbers, periods, and hyphens.
+# \. matches the literal dot.
+# ([a-z\.]{2,6}) matches the top-level domain, which can be between 2 to 6 letters long.
+
+import re
+
+# n  = int(input('Enter no of testcases: '))
+
+# for _ in range(n):
+#     s = input('Enter a regex: ')
+#     try:
+#         print(bool(re.compile(s)))
+#         # print(True)
+#     except:
+#         print(False)
+
+
+# string  = 'aababab'
+# regex = 'a(ab){3}'
+
+# if re.match(string=string,pattern=regex):
+#     print('Yes the string matched with regex')
+# else:
+#     print('The string didn\'t match with regex')
+
+
+# strings 
+
+# s = "kartikey goel"
+# s = s.lower()
+# l = s.split(' ')
+# l = [name.capitalize() for name in l]
+# s = ' '.join(l)
+
+
+# The eval() expression is a very powerful built-in function of Python. It helps in evaluating an expression. The expression can be a Python statement, or a code object.
+
+# For example:
+
+# >>> eval("9 + 5")
+# 14
+# >>> x = 2
+# >>> eval("x + 3")
+# 5
+
+# any() This expression returns True if any element of the iterable is true.
+# all() This expression returns True if all of the elements of the iterable are true. If the iterable is empty, it will return True.
+
+
+# l = input().split()
+# print(l)
+
+
+# Numpy 
+# import numpy 
+
+# Fixed Memory Allocation: When you create a list in some programming languages, you have to specify the size upfront. For example, in C or C++, you might declare an array with a fixed size like int myArray[10];. This means the array can hold exactly 10 elements, and it won't change unless you explicitly resize it.
+# Dynamic Memory Allocation: In Python, lists are dynamic, meaning they can grow or shrink as needed. You don't need to specify the size upfront. When you create a list, Python allocates a small chunk of memory to hold some initial elements.
+# Flexible Growth: As you add elements to the list, Python keeps track of how full the current memory allocation is. When the list becomes too full, Python automatically allocates a larger chunk of memory, typically doubling the previous capacity. It then copies the existing elements to the new memory location and adds the new element.
+# Automatic Memory Management: Python handles all of this memory management for you behind the scenes. You don't need to worry about resizing arrays or deallocating memory when you're done with a list. Python's garbage collector takes care of cleaning up unused memory.
+# So, in essence, Python lists don't have a fixed size or fixed memory allocation. They can grow or shrink dynamically as you add or remove elements, making them very convenient to use.
+
+# used for multi D Arrays 
+# every element should be of same type 
 
