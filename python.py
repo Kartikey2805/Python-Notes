@@ -131,6 +131,42 @@ from pathlib import Path
 # for file in path.glob('*.py'):
 #     print(file)
 
+# copy a file 
+
+# from pathlib import Path
+# import shutil
+
+# # Source file path
+# source_file = Path("path/to/source/file.txt")
+
+# # Destination folder path
+# destination_folder = Path("path/to/destination/folder")
+
+# # Copy the file to the destination folder
+# shutil.copy(source_file, destination_folder)
+
+# other way to copy without shutil 
+
+# from pathlib import Path
+
+# # Source file path
+# source_file = Path("path/to/source/file.txt")
+
+# # Destination folder path
+# destination_folder = Path("path/to/destination/folder")
+
+# # Read the content of the source file
+# with open(source_file, "rb") as f:
+#     file_content = f.read()
+
+# # Destination file path
+# destination_file = destination_folder / source_file.name
+
+# # Write the content to the destination file
+# with open(destination_file, "wb") as f:
+#     f.write(file_content)
+
+
 # import openpyxl as xl
 # from openpyxl.chart import Reference, BarChart
 # wb = xl.load_workbook('price.xlsx')
@@ -196,6 +232,7 @@ from pathlib import Path
 # if __name__ == "__main__"  --->  used in modules
 
 # # os module
+
 # import os
 # print(os.name)
 # # print((os.environ))
@@ -697,18 +734,18 @@ import json
 
 # Convert a Python object containing all the legal data types:
 
-x = {
-  "name": "John",
-  "age": 30,
-  "married": True,
-  "divorced": False,
-  "children": ("Ann","Billy"),
-  "pets": None,
-  "cars": [
-    {"model": "BMW 230", "mpg": 27.5},
-    {"model": "Ford Edge", "mpg": 24.1}
-  ]
-}
+# x = {
+#   "name": "John",
+#   "age": 30,
+#   "married": True,
+#   "divorced": False,
+#   "children": ("Ann","Billy"),
+#   "pets": None,
+#   "cars": [
+#     {"model": "BMW 230", "mpg": 27.5},
+#     {"model": "Ford Edge", "mpg": 24.1}
+#   ]
+# }
 # print(json.dumps(x))
 
 # indentation 
@@ -834,7 +871,7 @@ x = {
 # \. matches the literal dot.
 # ([a-z\.]{2,6}) matches the top-level domain, which can be between 2 to 6 letters long.
 
-import re
+# import re
 
 # n  = int(input('Enter no of testcases: '))
 
@@ -884,7 +921,8 @@ import re
 
 
 # Numpy 
-# import numpy 
+# import numpy as np 
+# print(np.array([1,2,3,4,5]))
 
 # Fixed Memory Allocation: When you create a list in some programming languages, you have to specify the size upfront. For example, in C or C++, you might declare an array with a fixed size like int myArray[10];. This means the array can hold exactly 10 elements, and it won't change unless you explicitly resize it.
 # Dynamic Memory Allocation: In Python, lists are dynamic, meaning they can grow or shrink as needed. You don't need to specify the size upfront. When you create a list, Python allocates a small chunk of memory to hold some initial elements.
@@ -894,4 +932,42 @@ import re
 
 # used for multi D Arrays 
 # every element should be of same type 
+
+# class Student:
+#     def __init__(self,name,age):
+#         self.name = name
+#         self.age = age
+    
+#     # used to find length
+#     def __len__(self):
+#         return len(self.name)
+    
+#     # used for return value when obj is created
+#     def __repr__(self):
+#         print('repr is called')
+#         return str({
+#             "name":self.name,
+#             "age":self.age
+#         })
+    
+#     # used for print(), takes priority over repr when both are defined
+#     def __str__(self):
+#         return "Object created successfully"
+    
+#     # equality check, we can implement for __ne__ (not equal), __lt__ (less than)
+#     def __eq__(self,other):
+#         if self.name == other.name and self.age == other.age:
+#             return True
+#         else:
+#             return False
+
+
+# s1 = Student('Kartikey',24)
+# s2 = Student('Kartikey',24)
+
+# print(s1) # __repr__ is used if __str__ is not defined
+# print(s1)  # __str__ is used when both __str__ and __repr__ are defined
+# print(len(s1)) # __len__ is used
+# print(s1 == s2) # __eq__ is used
+
 
