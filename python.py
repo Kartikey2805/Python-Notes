@@ -970,4 +970,61 @@ import json
 # print(len(s1)) # __len__ is used
 # print(s1 == s2) # __eq__ is used
 
+# print('some value',end='\t') # we can use end
 
+# list insert 
+
+l = [1,2,3,4,4]
+# index, value = [1,5]
+# l.insert(index,value)
+# print(l)
+
+# remove
+# l.remove(4)
+# print(l)
+
+# consecutive elements 
+# from itertools import groupby
+
+# s = input()
+
+# for key, group in groupby(s, lambda x: x):
+#     print(key,len(list(group)))
+
+# dict = {'Key1':10,'key3':8,'key2': 5}
+
+# print(dict.items())
+
+# for x in dict.items():
+#     print(type(x))
+#     print(x[0])
+
+# l = list(dict)
+
+# my_dict = {'apple': 3, 'banana': 2, 'orange': 3, 'pear': 2}
+
+# sorted_dict = dict(sorted(my_dict.items(), key=lambda x: (x[1], x[0]),reverse=True))
+
+# print(sorted_dict)
+
+# sets 
+
+# myset = {1, 2}
+# myset.add('c')
+# myset.update([1, 2, 3, 4]) # update() only works for iterable objects
+
+# Both the discard() and remove() functions take a single value as an argument and removes that value from the set. 
+# If that value is not present, discard() does nothing, but remove() will raise a KeyError exception.
+
+# COMMON SET OPERATIONS Using union(), intersection() and difference() functions.
+
+# s = {12,4,38}
+# ns = sorted(s)
+# print(type(ns))
+# for x in ns:
+#     print(x)
+
+a = {1,2,3,4,5,6,7,8}
+b = {4,5,6,7,8,9,10}
+
+print(a.difference(b))
