@@ -974,7 +974,7 @@ import json
 
 # list insert 
 
-l = [1,2,3,4,4]
+# l = [1,2,3,4,4]
 # index, value = [1,5]
 # l.insert(index,value)
 # print(l)
@@ -987,6 +987,11 @@ l = [1,2,3,4,4]
 # from itertools import groupby
 
 # s = input()
+
+# for key, group in groupby(s, lambda x: x):
+#     print(key)
+#     print(list(group))
+
 
 # for key, group in groupby(s, lambda x: x):
 #     print(key,len(list(group)))
@@ -1024,7 +1029,105 @@ l = [1,2,3,4,4]
 # for x in ns:
 #     print(x)
 
-a = {1,2,3,4,5,6,7,8}
-b = {4,5,6,7,8,9,10}
+# a = {1,2,3,4,5,6,7,8}
+# b = {4,5,6,7,8,9,10}
 
-print(a.difference(b))
+# # print(a.difference(b))
+# print(a.intersection(b))
+# print(a.union(b))
+
+# s = 'abcd'
+
+# def message(transaction):
+#     def wrapper(*args):
+#         transaction(args[0])
+#         print('Transaction is successfull')
+#     return wrapper
+
+# @message
+# def transaction(amount):
+#     print(f'transaction initiated, account will be debited with {amount}')
+
+# print(transaction(100))
+
+# from functools import reduce
+
+# s = 'abcd'
+# ans = reduce(lambda x, y : (x or y.isalnum()), s, False)
+# print(ans)
+
+# from itertools import permutations, combinations
+# l = [1,2,3]
+# s = "HACK"
+# print(str(permutations(s,2)))
+# print(list(permutations(l,2)))
+# print(list(combinations(l, 2)))
+
+# regex 
+# import re
+# # https://www.geeksforgeeks.org/regular-expression-python-examples/ 
+# n = int(input())
+# credit_cards = []
+
+# for _ in range(n):
+#     credit_cards.append(input())
+
+# pattern = r'^[4-6][0-9]{3}-?[0-9]{4}-?[0-9]{4}-?[0-9]{4}$'
+
+# for s in credit_cards:
+#     print(re.findall(pattern, s))
+
+# command line arguments 
+# import sys
+
+# args = sys.argv
+
+# print(args[1], args[2])
+
+# The walrus operator (:=) was introduced in Python 3.8 and allows you to assign values to variables as part of an expression. 
+# This can make certain operations more concise and potentially more readable. 
+# Here are a few examples to illustrate its use:
+
+# Without the walrus operator:
+
+# data = input("Enter some data: ")
+# while data != "quit":
+#     print(f"You entered: {data}")
+#     data = input("Enter some data: ")
+
+# With the walrus operator:
+
+# while (data := input("Enter some data: ")) != "quit":
+#     print(f"You entered: {data}")
+
+
+import shutil # used for high level file operations
+# shutil.copy('python.py','pythonCopy.py') #c only used to copy files
+# shutil.copytree('calculations','calculationsCopy') # used to copy entire directory and its content
+# shutil.rmtree('calculationsCopy') # delete a directory
+# os.remove('pythonCopy.py')
+
+# Generators
+# special functions that generate values on the fly as when requested they use yield keyword 
+# Generators in Python are a special kind of iterator, defined using functions and the yield statement. 
+# They allow you to iterate over a sequence of values lazily, meaning that values are generated on the fly 
+# and not stored in memory, which is particularly useful for large datasets or streams of data
+# Advantages of Generators
+# Memory Efficiency: Generators are memory efficient because they generate items one at a time and do not store the entire sequence in memory.
+# Lazy Evaluation: Generators compute values on the fly, which can be useful for handling large data streams or when the complete dataset is not needed at once.
+# Pipelining: Generators can be used to pipeline a series of operations, allowing for a clean and readable way to process data in stages.
+
+# Function Caching 
+# from functools import lru_cache
+# import time 
+
+# @lru_cache(maxsize=None)
+# def double(n):
+#     time.sleep(5)
+#     return n*2
+
+# print(double(10))
+# print(double(20))
+# print(double(10))
+# print(double(20))
+
