@@ -1,6 +1,9 @@
 import time
 from functools import reduce
 import os
+
+# https://www.codewithharry.com/blogpost/python-cheatsheet/
+
 # print('Hello World!' * 2)
 # print('''
 # Hi Kartikey,
@@ -1131,3 +1134,124 @@ import shutil # used for high level file operations
 # print(double(10))
 # print(double(20))
 
+# asyncio 
+
+# In Python, both multithreading and multiprocessing are techniques used for achieving concurrency and parallelism, but they differ in how they accomplish this.
+
+# Multithreading:
+# Multithreading involves running multiple threads within the same process, sharing the same memory space. Threads are lightweight execution units that share the same memory space, allowing them to communicate easily and efficiently. However, due to Python's Global Interpreter Lock (GIL), multithreading in Python does not fully utilize multiple CPU cores for CPU-bound tasks, as only one thread can execute Python bytecode at a time.
+
+# Multiprocessing:
+# Multiprocessing involves running multiple processes simultaneously, each with its own memory space. Processes are independent of each other and do not share memory by default. Instead, they communicate via inter-process communication (IPC) mechanisms like pipes, queues, or shared memory. Multiprocessing in Python bypasses the GIL, allowing multiple processes to run on separate CPU cores concurrently, making it suitable for CPU-bound tasks.
+
+# Example:
+# Let's illustrate the difference between multithreading and multiprocessing using a simple example of calculating the square of numbers. We'll compare the execution time for both approaches.
+
+# Multithreading Example:
+# python
+# Copy code
+# import threading
+
+# def square(n):
+#     return n * n
+
+# def main():
+#     numbers = [1, 2, 3, 4, 5]
+#     threads = []
+
+#     for number in numbers:
+#         thread = threading.Thread(target=square, args=(number,))
+#         threads.append(thread)
+#         thread.start()
+
+#     for thread in threads:
+#         thread.join()
+
+# if __name__ == "__main__":
+#     main()
+# Multiprocessing Example:
+# python
+# Copy code
+# import multiprocessing
+
+# def square(n):
+#     return n * n
+
+# def main():
+#     numbers = [1, 2, 3, 4, 5]
+#     pool = multiprocessing.Pool()
+
+#     results = pool.map(square, numbers)
+#     pool.close()
+#     pool.join()
+
+#     print(results)
+
+# if __name__ == "__main__":
+#     main()
+# Comparison:
+# Multithreading: In this example, each number is squared in a separate thread. However, due to Python's GIL, the execution time may not be significantly faster, especially for CPU-bound tasks.
+# Multiprocessing: In this example, each number is squared in a separate process using the multiprocessing.Pool class. This approach fully utilizes multiple CPU cores and may result in faster execution times for CPU-bound tasks.
+# Conclusion:
+# Use multithreading for I/O-bound tasks (e.g., network operations, file I/O) where threads spend most of their time waiting for I/O operations to complete.
+# Use multiprocessing for CPU-bound tasks (e.g., mathematical computations, data processing) that can benefit from parallel execution on multiple CPU cores.
+# It's essential to choose the appropriate concurrency model based on the nature of your task and hardware characteristics to achieve optimal performance.
+
+from numpy import copy
+import pandas as pd
+
+# Create two sample DataFrames
+df1 = pd.DataFrame({'ID': [1, 2, 3],
+                    'Name': ['Alice', 'Bob', 'Charlie'], 
+                    'k' : [1,2,3]})
+# print(df1)
+# print(df1.loc[0])
+
+# pd.merge(left=, right=, how='left', on='')  # for join 
+# merged_df = pd.merge(df_left, df_right, left_on='ID', right_on='CustomerID')
+# for common column names we use suffixes by default they are _x and _y
+# merged_df = pd.merge(df1, df2, on='ID', suffixes=('_left', '_right'))
+# rename column name 
+
+# Rename multiple columns
+# df.rename(columns={'A': 'New_Column_Name_A', 'B': 'New_Column_Name_B'}, inplace=True)
+
+# to copy 
+# df1 = pd.DataFrame({'A': [1, 2, 3],
+#                     'B': [4, 5, 6]})
+
+# # Create a new DataFrame from the original
+# df2 = df1.copy()
+
+# series to df -- series.to_frame() 
+
+# df = pd.DataFrame({'Num':[1,1,1,2,3,4,5,6,6,7,8,9,10]})
+# print(df[df['Num'].duplicated()].groupby('Num').sum())
+
+# ser1 = pd.Series([10,9,8,7])
+# ser2 = pd.Series([5,4,3,2])
+# ser3 = ser1 + ser2
+# print(ser3)
+# print(df.dtypes)
+
+# person.sort_values(by='id', inplace=True)
+# person.drop_duplicates(subset=['email'], inplace=True)
+
+# dic = {
+#     'name':['A','A','B','B'],
+#     'age':[1,2,3,4],
+#     'id':[12,11,15,14]
+# }
+# df = pd.DataFrame(dic)
+# print(df.groupby('name').agg(x=('id','min')))
+
+# df = customer[(customer.referee_id != 2) | (customer.referee_id.isnull())]['name']
+
+# import dictionary for graph 
+# from collections import defaultdict 
+  
+# # function for adding edge to graph 
+# graph = defaultdict(list) 
+# def addEdge(graph,u,v): 
+#     graph[u].append(v) 
+  
